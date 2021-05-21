@@ -28,15 +28,12 @@ class App extends React.Component {
 
         (await userRef).onSnapshot((snapshot) => {
           // use this snapshot to set the state of our App
-          this.setState(
-            {
-              currentUser: {
-                id: snapshot.id,
-                ...snapshot.data(),
-              },
+          this.setState({
+            currentUser: {
+              id: snapshot.id,
+              ...snapshot.data(),
             },
-            () => console.log(this.state)
-          );
+          });
         });
       } else {
         // no user is signed in. userAuth object is NULL.
