@@ -15,3 +15,21 @@ export const addItemToCartHelper = (cartItems, newItem) => {
     return [...cartItems, { ...newItem, quantity: 1 }];
   }
 };
+
+//Helper function for "Remove-Item-From-Cart"
+export const removeItemsHelper = (cartItems, itemToBeRemoved) => {
+  //Check if the item to be removed exists in the cartItems array
+  const existingItem = cartItems.find(
+    (cartItem) => cartItem.id === itemToBeRemoved.id
+  );
+  console.log("Called -- ", existingItem);
+  if (existingItem.quantity === 1) {
+    return cartItems.filter((cartItem) => cartItem.id !== itemToBeRemoved.id);
+  } else {
+    return cartItems.map((cartItem) =>
+      cartItem.id === itemToBeRemoved.id
+        ? { ...cartItem, quantity: cartItem.quantity - 1 }
+        : cartItem
+    );
+  }
+};
