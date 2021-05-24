@@ -23,3 +23,12 @@ export const cartItemsCount = createSelector([selectCartItems], (cartItems) =>
     0
   )
 );
+
+//Selector for calculating the Grand Total for the items in the cart
+export const selectCartTotal = createSelector([selectCartItems], (cartItems) =>
+  cartItems.reduce(
+    (accumulatedValue, cartItem) =>
+      cartItem.quantity * cartItem.price + accumulatedValue,
+    0
+  )
+);
