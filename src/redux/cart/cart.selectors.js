@@ -3,6 +3,12 @@ import { createSelector } from "reselect";
 // Input selector, that extracts a slice of the redux store/entire state.
 const selectCart = (state) => state.cart;
 
+//Output selector for selecting the hidden property of the cart dropdown
+export const selectCartHidden = createSelector(
+  [selectCart],
+  (cart) => cart.hidden
+);
+
 // Output selector, that uses an input selector and the createSelector function from
 // reselect library.
 export const selectCartItems = createSelector(
