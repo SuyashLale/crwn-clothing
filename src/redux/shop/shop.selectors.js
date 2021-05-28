@@ -9,6 +9,15 @@ export const selectCollections = createSelector(
   (shop) => shop.collections
 );
 
+// Output selector for CollectionsPreview.
+// Object.keys --> gives the keys in the collections Object into an array
+// [hats, sneakers, jackets, womens, mens]
+// Invoke map on this array to output the value of the object at the 'key' in collections.
+export const selectCollectionsForPreview = createSelector(
+  [selectCollections],
+  (collections) => Object.keys(collections).map((key) => collections[key])
+);
+
 // Selector to match and return the collection based on the url params passed
 export const selectCollection = (collectionUrlParam) =>
   createSelector(
