@@ -19,7 +19,6 @@ const StripeButton = ({ price }) => {
       billingAddress
       shippingAddress
       currency="INR"
-      image="https://sendeyo.com/up/d/f3eb2117da"
       description={`Your total is INR ${price}`}
       amount={stripePrice}
       PanelLabe="Pay Now"

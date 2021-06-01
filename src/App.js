@@ -12,6 +12,7 @@ import SignInAndSignUp from "./pages/sign-in-and-sign-up/sign-in-and-sign-up.com
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selectors";
+// import { selectCollectionsForPreview } from "./redux/shop/shop.selectors";
 
 class App extends React.Component {
   unsubsribeFromAuth = null;
@@ -19,6 +20,16 @@ class App extends React.Component {
   componentDidMount() {
     // Destructure from the action that just mapped to a prop in mapDispatchToProps.
     const { setCurrentUser } = this.props;
+
+    /*     //This call is to add the SHOP DATA to firebase programatically. To be called only once.
+    addCollectionAndDocuments(
+      "collections",
+      collectionsArray.map(({ title, items }) => ({
+        title: title,
+        items: items,
+      }))
+    );
+ */
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         //if we get an object back, when the user sign in
@@ -67,6 +78,7 @@ class App extends React.Component {
 // and mapping it to props
 const mapStateToProps = (state) => ({
   currentUser: selectCurrentUser(state),
+  // collectionsArray: selectCollectionsForPreview(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
