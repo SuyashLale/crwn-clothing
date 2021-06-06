@@ -1,4 +1,4 @@
-import { CartActionTypes } from "./cart-action.types";
+import CartActionTypes from "./cart-action.types";
 
 // Action: Show/Hide the CartDropDown Component
 export const toggleCartHidden = () => ({
@@ -21,4 +21,8 @@ export const clearItemFromCart = (item) => ({
 export const removeItemFromCart = (item) => ({
   type: CartActionTypes.REMOVE_ITEM_FROM_CART,
   payload: item,
+});
+
+export const clearCart = () => ({
+  type: CartActionTypes.CLEAR_CART,
 });
